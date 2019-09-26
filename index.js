@@ -2,6 +2,9 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const SettingsBill = require('./settings-bill');
+
+var moment = require('moment');
+
 const app = express();
 const settingsBill = SettingsBill();
 
@@ -25,7 +28,7 @@ app.get('/', function (req, res) {
   res.render('index', {
     settings: settingsBill.getSettings(),
     totals: settingsBill.totals(),
-    color: settingsBill.changingTheColor(),
+     color: settingsBill.changingTheColor(),
   });
 });
 
@@ -45,8 +48,12 @@ app.post('/action', function (req, res) {
 });
 
 app.get('/actions', function (req, res) {
-  res.render('actions', {
-    actions: settingsBill.actions()
+  var time = settingsBill.actions()
+  for (const iterator of time) {
+    iterator.ago = moment(iterator.timestamp).fromNow();
+  }
+  res.render('actions',{
+    actions:  time 
   });
 });
 

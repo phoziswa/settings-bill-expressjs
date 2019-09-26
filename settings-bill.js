@@ -73,45 +73,39 @@ module.exports = function SettingsBill() {
     }
 
     function totals() {
-        let smsTotal = getTotal('sms')
-        let callTotal = getTotal('call')
+        let smsTotal = getTotal('sms');
+        let callTotal = getTotal('call');
         return {
-            smsTotal,
-            callTotal,
-            grandTotal : grandTotal()
-        }
+            smsTotal: smsTotal.toFixed(2),
+            callTotal: callTotal.toFixed(2),
+            grandTotal: grandTotal().toFixed(2)
     }
+ }
 
-    function hasReachedWarningLevel(){
-        const total = grandTotal();
-        const reachedWarningLevel = total >= warningLevel 
-            && total < criticalLevel;
+//     function hasReachedWarningLevel(){
+//         const total = grandTotal();
+//         const reachedWarningLevel = total >= warningLevel 
+//             && total < criticalLevel;
 
-        return reachedWarningLevel;
+//         return reachedWarningLevel;
+//     }
+
+//     function hasReachedCriticalLevel(){
+//         const total = grandTotal();
+//         return total >= criticalLevel;
+//     }
+
+//     function hasReachedCriticalLevel() {
+//         const total = grandTotal();
+//         return total >= criticalLevel;
+//     }
+function changingTheColor(){
+    if( grandTotal() >= warningLevel && grandTotal() < criticalLevel){
+      return "warning"
+    }else if( grandTotal() >= criticalLevel){
+      return "danger"
     }
-
-    function hasReachedCriticalLevel(){
-        const total = grandTotal();
-        return total >= criticalLevel;
-    }
-
-    function hasReachedCriticalLevel() {
-        const total = grandTotal();
-        return total >= criticalLevel;
-    }
-    function changingTheColor() {
-        if (totals().grandTotal >= criticalLevel) {
-          return "danger";
-        } else if (
-          totals().grandTotal >= warningLevel &&
-          totals().grandTotal <= criticalLevel
-        ) {
-          return "warning";
-        } else {
-          return "";
-        }
-      }
-    
+  }
       function stopingTheColor() {
         
         return grandTotal() >= criticalLevel;
@@ -124,8 +118,8 @@ module.exports = function SettingsBill() {
         actions,
         actionsFor,
         totals,
-        hasReachedWarningLevel,
-        hasReachedCriticalLevel,
+        // hasReachedWarningLevel,
+        // hasReachedCriticalLevel,
         changingTheColor,
         stopingTheColor
     }
