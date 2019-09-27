@@ -60,7 +60,7 @@ describe('settingsBill function', function () {
 
     });
 
-    it('should return true when it reaches warning level', function(){
+    it('should return warning when it reaches warning level', function(){
         const settingsBill = SettingsBill();
         settingsBill.setSettings({
             smsCost: 3.00,
@@ -75,10 +75,10 @@ describe('settingsBill function', function () {
         settingsBill.recordAction('sms');
 
 
-        assert.equal(true, settingsBill.hasReachedWarningLevel());
+        assert.equal("warning", settingsBill.changingTheColor());
     });
 
-    it('should return true when it reaches critical level', function(){
+    it('should return danger when it reaches critical level', function(){
         const settingsBill = SettingsBill();
         settingsBill.setSettings({
             smsCost: 5.50,
@@ -94,7 +94,7 @@ describe('settingsBill function', function () {
         settingsBill.recordAction('call');
         settingsBill.recordAction('sms');
 
-        assert.equal(true, settingsBill.hasReachedCriticalLevel());
+        assert.equal("danger", settingsBill.changingTheColor());
 
     });
 });

@@ -82,23 +82,6 @@ module.exports = function SettingsBill() {
     }
  }
 
-//     function hasReachedWarningLevel(){
-//         const total = grandTotal();
-//         const reachedWarningLevel = total >= warningLevel 
-//             && total < criticalLevel;
-
-//         return reachedWarningLevel;
-//     }
-
-//     function hasReachedCriticalLevel(){
-//         const total = grandTotal();
-//         return total >= criticalLevel;
-//     }
-
-//     function hasReachedCriticalLevel() {
-//         const total = grandTotal();
-//         return total >= criticalLevel;
-//     }
 function changingTheColor(){
     if( grandTotal() >= warningLevel && grandTotal() < criticalLevel){
       return "warning"
