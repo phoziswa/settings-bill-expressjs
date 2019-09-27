@@ -66,6 +66,6 @@ app.get('/actions :actionType', function (req, res) {
 
 const PORT = process.env.PORT || 5000 ;
 
-app.listen(PORT, function () {
+app.listen(PORT, function() {
   console.log('App starting on port', PORT);
 });
